@@ -1,0 +1,21 @@
+{
+  "name": "lambda-authorizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "devDependencies": {
+    "serverless-offline": "^3.25.14",
+    "serverless-dynamodb-local": "^0.2.35"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.3.0",
+    "serverless-dynamodb-client": "0.0.2",
+    "uuid": "^3.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

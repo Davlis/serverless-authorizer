@@ -1,0 +1,41 @@
+service: lambda-authorizer
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:us-east-1:*:*"
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+functions:
+    authorize:
+      handler: handler.authorize
+      cors: true
+
+    register:
+      handler: handler.register
+      events:
+        - http:
+            path: auth/register
+            method: post
+            cors: true
+
+    login:
+      handler: handler.login
+      events:
+        - http:
+            path: auth/login
+            method: post
+            cors: true
